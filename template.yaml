@@ -47,6 +47,9 @@ Resources:
             Name: ScheduleTestRule
             Description: test schedule
             Enabled: true
+      Environment:
+        Variables:
+          QUEUE_URL: !GetAtt MySqsQueue.QueueUrl
       Policies: # Add inline policies to the function role
         - Version: '2012-10-17'
           Statement:
