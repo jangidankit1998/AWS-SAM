@@ -1,6 +1,7 @@
 from __future__ import print_function
 import json
 import boto3
+import os
 
 # import requests
 
@@ -11,7 +12,7 @@ def scheduled_handler(event, context):
 
     #produce message to SQS queue
     sqs = boto3.client('sqs') 
-    queue_url = 'https://sqs.eu-north-1.amazonaws.com/300099455105/sam-app-MySqsQueue-BXyh2PNAD4Q1'
+    queue_url = os.environ.get('QUEUE_URL')
 
     message_body = {
         "message": "Hello Sending message",
